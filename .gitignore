@@ -1,0 +1,20 @@
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+docker/grafana
+docker/loki
+docker/mongo
+docker/mysql
+docker/prometheus
+docker/promtail
+docker/redis

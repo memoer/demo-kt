@@ -1,0 +1,27 @@
+spring.config.activate.on-profile: local
+
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/test
+      username: test
+      password: q1w2e3
+      maximum-pool-size: 5
+      connection-timeout: 30_000
+      keepalive-time: 300_000
+      validation-timeout: 5_000
+      max-lifetime: 1_800_000
+      leak-detection-threshold: 60_000
+      pool-name: mysql-pool
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        default_batch_fetch_size: 100
+        hbm2ddl:
+          auto: create
+    open-in-view: false
+
+---

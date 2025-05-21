@@ -1,0 +1,14 @@
+spring.config.activate.on-profile: local
+
+spring:
+  security:
+    cors:
+      allowed-headers:
+        - Authorization
+        - Content-Type
+      allowed-methods: GET,POST,PATCH,DELETE,OPTIONS
+      allow-credentials: false
+      allowed-origins:
+        - "*"
+
+---

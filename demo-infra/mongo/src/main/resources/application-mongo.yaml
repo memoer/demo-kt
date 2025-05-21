@@ -1,0 +1,16 @@
+spring.config.activate.on-profile: local
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://test:q1w2e3@localhost:27017/
+      connection-pool:
+        min-size: 10
+        max-size: 20
+        max-connection-life-time: 30s
+        max-connection-idle-time: 30s
+        max-wait-time: 10s
+      database: test
+      authentication-database: admin
+
+---

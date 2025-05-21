@@ -1,0 +1,21 @@
+spring.config.activate.on-profile: local
+
+server:
+  tomcat:
+    max-connections: 8192 # 수립가능한 connection의 총 개수 [default 8192]
+    threads:
+      max: 200 # 생성할 수 있는 thread의 총 개수 [default 200]
+      min-spare: 10 # 항상 활성화 되어있는(idle) thread의 개수 [default 10]
+    accept-count: 100 # 작업큐의 사이즈 [default 100]
+    connection-timeout: 20000 # timeout 판단 기준 시간, 20초 [default 20_000]
+  error:
+    whitelabel:
+      enabled: false
+    include-stacktrace: never
+  executor:
+    event:
+      core-pool-size: 10
+      max-pool-size: 20
+      queue-capacity: 10
+
+---

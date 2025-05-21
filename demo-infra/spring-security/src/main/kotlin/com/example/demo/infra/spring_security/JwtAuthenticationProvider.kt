@@ -1,0 +1,17 @@
+package com.example.demo.infra.spring_security
+
+import org.springframework.security.authentication.AuthenticationProvider
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.userdetails.UserDetailsService
+
+class JwtAuthenticationProvider(private val userDetailsService: UserDetailsService) : AuthenticationProvider {
+    override fun authenticate(authentication: Authentication?): Authentication? = authentication?.credentials?.let {
+        userDetailsService.loadUserByUsername(it as String)
+    }?.let {
+        JwtAuthenticationToken(it, null, it.authorities)
+    }
+
+    override fun supports(authentication: Class<*>): Boolean {
+        return authentication.equals(JwtAuthenticationToken::class)
+    }
+}

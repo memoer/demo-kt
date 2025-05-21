@@ -1,0 +1,97 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:8.0.35
+    container_name: test-mysql
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_ROOT_PASSWORD: q1w2e3
+      MYSQL_PASSWORD: q1w2e3
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  mongo:
+    image: mongo
+    container_name: test-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: test
+      MONGO_INITDB_ROOT_PASSWORD: q1w2e3
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/data:/data/db
+
+  redis:
+    image: redis:7.2.4-alpine
+    container_name: test-redis
+    ports:
+      - 6379:6379
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./redis/data:/data
+      - ./redis/config:/usr/local/etc/redis/redis.conf
+    restart: always
+
+  prometheus:
+    image: prom/prometheus
+    container_name: test-prometheus
+    volumes:
+      - ./prometheus/config:/etc/prometheus
+      - ./prometheus/data:/prometheus
+    ports:
+      - 9090:9090
+    command:
+      - '--storage.tsdb.path=/prometheus'
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+    restart: always
+  grafana:
+    image: grafana/grafana
+    container_name: test-grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin # grafana 사용자 이름
+      - GF_SECURITY_ADMIN_PASSWORD=admin # grafana 사용자 비밀번호
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: always
+    depends_on:
+      - prometheus
+  redis-exporter:
+    container_name: test-redis-exporter
+    image: oliver006/redis_exporter:latest
+    environment:
+      - REDIS_ADDR=redis://test-redis:6379
+    ports:
+      - 9121:9121
+    depends_on:
+      - prometheus
+    restart: always
+  loki:
+    image: grafana/loki:2.9.0
+    container_name: test-loki
+    ports:
+      - 3100:3100
+    volumes:
+      - ./loki/config:/etc/loki
+      - ./loki/data:/loki
+      - ./loki/wal:/wal
+    command: -config.file=/etc/loki/loki-config.yaml
+    restart: always
+  promtail:
+    image: grafana/promtail:2.9.0
+    container_name: test-promtail
+    volumes:
+      - ./promtail/config:/etc/promtail
+      - ../logs:/logs  # Update this path to your Spring app logs
+      - /var/log:/host/var/log  # Host system logs if needed
+    command: -config.file=/etc/promtail/promtail-config.yaml
+    depends_on:
+      - loki
+    restart: always
