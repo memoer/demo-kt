@@ -1,12 +1,13 @@
-spring.application.name: demo-api
+spring.application.name: demo-app-api
 
 spring:
   config:
     import:
+      - application-actuator.yaml
+      - application-grpc.yaml
+      - application-logback.yaml
       - application-mongo.yaml
       - application-mysql.yaml
       - application-redis.yaml
-      - application-spring-actuator.yaml
-      - application-spring-grpc.yaml
-      - application-spring-security.yaml
-      - application-spring-web.yaml
+      - application-security.yaml
+      - application-web.yaml

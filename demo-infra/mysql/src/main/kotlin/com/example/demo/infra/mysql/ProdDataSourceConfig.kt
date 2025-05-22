@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Profile
 import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy
 import javax.sql.DataSource
 
-
 @Configuration(proxyBeanMethods = false)
 @Profile("stage | prod")
 class ProdDataSourceConfig {
@@ -28,6 +27,6 @@ class ProdDataSourceConfig {
     @Bean(name = [DataSourceName.LAZY])
     fun lazyDataSource(
         @Qualifier(DataSourceName.MASTER) master: DataSource,
-        @Qualifier(DataSourceName.SLAVE) slave: DataSource?
+        @Qualifier(DataSourceName.SLAVE) slave: DataSource?,
     ): DataSource = LazyConnectionDataSourceProxy(master).apply { setReadOnlyDataSource(slave) }
 }

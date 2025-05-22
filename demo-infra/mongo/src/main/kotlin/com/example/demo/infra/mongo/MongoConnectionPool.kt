@@ -9,5 +9,5 @@ data class MongoConnectionPool(
     internal val maxSize: Int,
     internal val maxConnectionLifeTime: Duration,
     internal val maxConnectionIdleTime: Duration,
-    internal val maxWaitTime: Duration
+    internal val maxWaitTime: Duration,
 )

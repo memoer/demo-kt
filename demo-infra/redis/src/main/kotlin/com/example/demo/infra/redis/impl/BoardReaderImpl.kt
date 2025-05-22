@@ -1,18 +1,17 @@
 package com.example.demo.infra.redis.impl
 
-import com.example.demo.domain.BoardEntity
-import com.example.demo.infra.redis.mapping.BoardMapping
-import com.example.demo.usecase.port.BoardReader
+import com.example.demo.core.board.domain.Board
+import com.example.demo.core.board.port.BoardReader
+import com.example.demo.infra.redis.entity.BoardEntity
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.data.redis.core.StringRedisTemplate
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Repository
 import java.util.UUID
 
-@Service
+@Repository
 class BoardReaderImpl(private val om: ObjectMapper, private val template: StringRedisTemplate) : BoardReader {
-    override fun read(id: UUID): BoardEntity =
-        template.opsForValue().get(id.toString())?.let { om.readValue(it, BoardMapping::class.java) }?.toEntity()
-            ?: throw RuntimeException()
+    override fun readById(id: UUID): Board? =
+        template.opsForValue().get(id.toString())?.let { om.readValue(it, BoardEntity::class.java) }?.toDomain()
 
     override fun existsById(id: UUID): Boolean = template.opsForValue().get(id.toString()) != null
 }

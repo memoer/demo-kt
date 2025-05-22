@@ -30,7 +30,6 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
-    apply(plugin = "com.google.protobuf")
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
     dependencyManagement {

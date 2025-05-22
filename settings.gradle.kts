@@ -1,27 +1,27 @@
 rootProject.name = "demo"
 
-include (
+include(
     "demo-app:api",
     "demo-app:admin",
 
-    "demo-interface:api",
-    "demo-interface:admin",
+    "demo-client:alarm",
+    "demo-client:auth",
+
+    "demo-core:user",
+    "demo-core:board",
+    "demo-core:comment",
+    "demo-core:common",
 
     "demo-infra:grpc",
-    "demo-infra:kafka",
     "demo-infra:logback",
     "demo-infra:mongo",
     "demo-infra:mysql",
     "demo-infra:redis",
-    "demo-infra:spring-actuator",
-    "demo-infra:spring-security",
-    "demo-infra:spring-web",
+    "demo-infra:actuator",
+    "demo-infra:security",
+    "demo-infra:web",
 
-    "demo-usecase",
-
-    "demo-domain",
-
-    "demo-lib"
+    "demo-lib",
 )
 
 pluginManagement {

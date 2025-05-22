@@ -1,7 +1,6 @@
 dependencies {
-    implementation(project(":demo-domain"))
-    implementation(project(":demo-usecase"))
     implementation(project(":demo-lib"))
+    implementation(project(":demo-core:comment"))
 
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 }

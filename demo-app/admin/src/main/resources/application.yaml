@@ -1,0 +1,8 @@
+spring.application.name: demo-app-api
+
+spring:
+  config:
+    import:
+      - application-actuator.yaml
+      - application-logback.yaml
+      - application-web.yaml
