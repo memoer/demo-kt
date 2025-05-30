@@ -7,7 +7,6 @@ plugins {
     id("io.spring.dependency-management")
     id("com.google.protobuf") apply false
     id("org.jlleitschuh.gradle.ktlint") apply false
-    id("io.kotest") version "6.0.0.M4" apply false
 }
 
 java {
@@ -42,12 +41,14 @@ subprojects {
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-        testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
-        testImplementation("io.kotest:kotest-assertions-core:5.9.1")
-        testImplementation("io.mockk:mockk:1.14.2")
+        testImplementation("io.kotest:kotest-runner-junit5:${property("kotest_version")}")
+        testImplementation("io.kotest:kotest-assertions-core:${property("kotest_version")}")
+        testImplementation("io.mockk:mockk:${property("mockk_version")}")
     }
 
     java {
