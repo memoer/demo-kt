@@ -11,6 +11,8 @@ build/
 *.ipr
 out/
 
+logs
+
 docker/grafana
 docker/loki
 docker/mongo
