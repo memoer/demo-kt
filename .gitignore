@@ -17,6 +17,8 @@ docker/grafana
 docker/loki
 docker/mongo
 docker/mysql
+docker/postgresql
 docker/prometheus
 docker/promtail
 docker/redis
+docker/sonar

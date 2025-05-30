@@ -22,7 +22,7 @@ dependencies {
     implementation(project(":demo-core:common"))
     implementation(project(":demo-core:user"))
 
-    implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlin_logging_version")}")
+    implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 }
