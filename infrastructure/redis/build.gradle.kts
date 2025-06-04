@@ -1,6 +1,6 @@
 dependencies {
-    implementation(project(":demo-core:board"))
-    implementation(project(":demo-lib"))
+    implementation(project(":core:board"))
+    implementation(project(":library"))
 
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
 }

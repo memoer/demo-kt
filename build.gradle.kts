@@ -8,8 +8,6 @@ plugins {
     id("com.google.protobuf") apply false
 
     id("org.jlleitschuh.gradle.ktlint") apply false
-    id("org.sonarqube")
-    id("jacoco")
 }
 
 java {
@@ -36,8 +34,6 @@ subprojects {
     apply(plugin = "io.spring.dependency-management")
 
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
-    apply(plugin = "org.sonarqube")
-    apply(plugin = "jacoco")
 
     dependencyManagement {
         imports {
@@ -70,11 +66,6 @@ subprojects {
         }
     }
 
-    jacoco {
-        toolVersion = "0.8.13"
-        reportsDirectory = layout.buildDirectory.dir("reports/jacoco")
-    }
-
     tasks.getByName("bootJar") {
         enabled = false
     }
@@ -89,43 +80,5 @@ subprojects {
             html.required.set(false)
             junitXml.required.set(false)
         }
-        finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
-    }
-
-    tasks.jacocoTestReport {
-        dependsOn(tasks.test) // tests are required to run before generating the report
-    }
-
-    tasks.jacocoTestReport {
-        reports {
-            xml.required = false
-            csv.required = false
-            html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
-        }
-    }
-}
-
-sonar {
-    properties {
-        property("sonar.projectName", "demo")
-        property("sonar.projectVersion", "${property("appVersion")}")
-        property("sonar.projectKey", "demo")
-        property("sonar.language", "kotlin")
-
-        property("sonar.sourceEncoding", "UTF-8")
-
-        property("sonar.host.url", "${property("sonarqubeHost")}")
-        property("sonar.token", "${property("sonarqubeToken")}")
-
-        property(
-            "sonar.modules",
-            listOf(
-                "demo-app",
-                "demo-client",
-                "demo-core",
-                "demo-infra",
-                "demo-lib",
-            ),
-        )
     }
 }

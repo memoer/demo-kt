@@ -13,19 +13,14 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-    implementation(project(":demo-infra:actuator"))
-    implementation(project(":demo-infra:grpc"))
-    implementation(project(":demo-infra:logback"))
-    implementation(project(":demo-infra:mongo"))
-    implementation(project(":demo-infra:mysql"))
-    implementation(project(":demo-infra:redis"))
-    implementation(project(":demo-infra:security"))
-    implementation(project(":demo-infra:web"))
+    implementation(project(":infrastructure:actuator"))
+    implementation(project(":infrastructure:logback"))
+    implementation(project(":infrastructure:web"))
 
-    implementation(project(":demo-core:board"))
-    implementation(project(":demo-core:comment"))
-    implementation(project(":demo-core:common"))
-    implementation(project(":demo-core:user"))
+    implementation(project(":core:board"))
+    implementation(project(":core:comment"))
+    implementation(project(":core:common"))
+    implementation(project(":core:user"))
 
     implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
     implementation("org.springframework.boot:spring-boot-starter-aop")

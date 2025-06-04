@@ -1,6 +1,6 @@
 dependencies {
-    implementation(project(":demo-core:user"))
-    implementation(project(":demo-lib"))
+    implementation(project(":core:user"))
+    implementation(project(":library"))
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 

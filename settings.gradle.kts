@@ -1,27 +1,27 @@
 rootProject.name = "demo"
 
 include(
-    "demo-app:api",
-    "demo-app:admin",
+    "app:api",
+    "app:admin",
 
-    "demo-client:alarm",
-    "demo-client:auth",
+    "client:alarm",
+    "client:auth",
 
-    "demo-core:user",
-    "demo-core:board",
-    "demo-core:comment",
-    "demo-core:common",
+    "core:user",
+    "core:board",
+    "core:comment",
+    "core:common",
 
-    "demo-infra:grpc",
-    "demo-infra:logback",
-    "demo-infra:mongo",
-    "demo-infra:mysql",
-    "demo-infra:redis",
-    "demo-infra:actuator",
-    "demo-infra:security",
-    "demo-infra:web",
+    "infrastructure:grpc",
+    "infrastructure:logback",
+    "infrastructure:mongo",
+    "infrastructure:mysql",
+    "infrastructure:redis",
+    "infrastructure:actuator",
+    "infrastructure:security",
+    "infrastructure:web",
 
-    "demo-lib",
+    "library",
 )
 
 pluginManagement {
@@ -30,7 +30,6 @@ pluginManagement {
     val springDependencyManagementVersion: String by settings
     val protobufVersion: String by settings
     val ktLintVersion: String by settings
-    val sonarqubeVersion: String by settings
 
     resolutionStrategy {
         eachPlugin {
@@ -43,7 +42,6 @@ pluginManagement {
                 "io.spring.dependency-management" -> useVersion(springDependencyManagementVersion)
                 "com.google.protobuf" -> useVersion(protobufVersion)
                 "org.jlleitschuh.gradle.ktlint" -> useVersion(ktLintVersion)
-                "org.sonarqube" -> useVersion(sonarqubeVersion)
             }
         }
     }
