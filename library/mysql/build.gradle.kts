@@ -1,8 +1,7 @@
 dependencies {
-    implementation(project(":core:user"))
-    implementation(project(":support"))
-
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    runtimeOnly("com.mysql:mysql-connector-j")
 }
 
 allOpen {

@@ -13,14 +13,14 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-    implementation(project(":infrastructure:actuator"))
-    implementation(project(":infrastructure:grpc"))
-    implementation(project(":infrastructure:logback"))
-    implementation(project(":infrastructure:mongo"))
-    implementation(project(":infrastructure:mysql"))
-    implementation(project(":infrastructure:redis"))
-    implementation(project(":infrastructure:security"))
-    implementation(project(":infrastructure:web"))
+    implementation(project(":library:actuator"))
+    implementation(project(":library:grpc"))
+    implementation(project(":library:logback"))
+    implementation(project(":library:mongodb"))
+    implementation(project(":library:mysql"))
+    implementation(project(":library:redis"))
+    implementation(project(":library:security"))
+    implementation(project(":library:web"))
 
     implementation(project(":core:board"))
     implementation(project(":core:comment"))

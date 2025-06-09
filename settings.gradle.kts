@@ -12,16 +12,20 @@ include(
     "core:comment",
     "core:common",
 
-    "infrastructure:grpc",
-    "infrastructure:logback",
-    "infrastructure:mongo",
     "infrastructure:mysql",
+    "infrastructure:mongodb",
     "infrastructure:redis",
-    "infrastructure:actuator",
-    "infrastructure:security",
-    "infrastructure:web",
 
-    "library",
+    "library:grpc",
+    "library:logback",
+    "library:mongodb",
+    "library:mysql",
+    "library:redis",
+    "library:actuator",
+    "library:security",
+    "library:web",
+
+    "support",
 )
 
 pluginManagement {

@@ -13,9 +13,9 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-    implementation(project(":infrastructure:actuator"))
-    implementation(project(":infrastructure:logback"))
-    implementation(project(":infrastructure:web"))
+    implementation(project(":library:actuator"))
+    implementation(project(":library:logback"))
+    implementation(project(":library:web"))
 
     implementation(project(":core:board"))
     implementation(project(":core:comment"))
