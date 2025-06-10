@@ -1,6 +1,4 @@
 #https://techblog.woowahan.com/9232/
-spring.config.activate.on-profile: local
-
 server:
   tomcat:
     mbeanregistry:
@@ -28,5 +26,3 @@ management:
       base-path: /observer
       exposure:
         include: "health,info,loggers,threaddump,prometheus,metrics"
-
----

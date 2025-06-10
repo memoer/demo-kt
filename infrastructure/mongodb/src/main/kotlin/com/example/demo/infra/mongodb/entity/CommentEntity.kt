@@ -1,4 +1,4 @@
-package com.example.demo.infra.mongodbadapter.entity
+package com.example.demo.infra.mongodb.entity
 
 import com.example.demo.core.comment.domain.Comment
 import com.example.demo.support.ReflectionUtils

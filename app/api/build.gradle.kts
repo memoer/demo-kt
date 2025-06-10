@@ -27,15 +27,16 @@ dependencies {
     implementation(project(":library:web"))
 
     implementation(project(":client:alarm"))
+    implementation(project(":client:auth"))
 
     implementation(project(":core:board"))
     implementation(project(":core:comment"))
     implementation(project(":core:common"))
     implementation(project(":core:user"))
 
-    implementation(project(":infra:mongodb-adapter"))
-    implementation(project(":infra:mysql-adapter"))
-    implementation(project(":infra:redis-adapter"))
+    implementation(project(":infrastructure:mongodb-adapter"))
+    implementation(project(":infrastructure:mysql-adapter"))
+    implementation(project(":infrastructure:redis-adapter"))
 
     implementation(project(":support"))
 }

@@ -26,7 +26,9 @@ class SecurityConfig(
 ) {
     @Bean
     @Throws(Exception::class)
-    fun filterChain(): SecurityFilterChain? = http.cors(cors())
+    fun filterChain(): SecurityFilterChain? = http
+        .cors(cors())
+        .csrf { it.disable() }
         .requestCache { it.disable() }
         .formLogin { it.disable() }
         .httpBasic { it.disable() }
@@ -49,7 +51,7 @@ class SecurityConfig(
                 allowCredentials = props.cors.allowCredentials
                 allowedHeaders = props.cors.allowedHeaders
             }
-        val source = UrlBasedCorsConfigurationSource().apply { registerCorsConfiguration("/&&", config) }
+        val source = UrlBasedCorsConfigurationSource().apply { registerCorsConfiguration("/**", config) }
         return Customizer { it.configurationSource(source) }
     }
 

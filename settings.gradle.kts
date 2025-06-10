@@ -13,10 +13,11 @@ include(
     "core:comment",
     "core:common",
 
-    "infra:mongodb-adapter",
-    "infra:mysql-adapter",
-    "infra:redis-adapter",
+    "infrastructure:mongodb",
+    "infrastructure:mysql",
+    "infrastructure:redis",
 
+    "library:cloud-aws",
     "library:grpc",
     "library:log",
     "library:mongodb",
@@ -28,6 +29,10 @@ include(
 
     "support",
 )
+
+project(":infrastructure:mongodb").name = "mongodb-adapter"
+project(":infrastructure:mysql").name = "mysql-adapter"
+project(":infrastructure:redis").name = "redis-adapter"
 
 pluginManagement {
     val kotlinVersion: String by settings

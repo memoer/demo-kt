@@ -38,12 +38,15 @@ subprojects {
     dependencyManagement {
         imports {
             mavenBom("org.springframework.grpc:spring-grpc-dependencies:${property("springGrpcVersion")}")
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
         }
     }
 
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+//        implementation("io.awspring.cloud:spring-cloud-aws-starter-s3")
 
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 

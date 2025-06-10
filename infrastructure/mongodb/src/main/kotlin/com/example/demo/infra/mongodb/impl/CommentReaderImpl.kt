@@ -1,8 +1,8 @@
-package com.example.demo.infra.mongodbadapter.impl
+package com.example.demo.infra.mongodb.impl
 
 import com.example.demo.core.comment.domain.Comment
 import com.example.demo.core.comment.port.CommentReader
-import com.example.demo.infra.mongodbadapter.repository.CommentRepository
+import com.example.demo.infra.mongodb.repository.CommentRepository
 import org.springframework.stereotype.Repository
 
 @Repository

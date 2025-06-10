@@ -1,5 +1,3 @@
-spring.config.activate.on-profile: local
-
 server:
   tomcat:
     max-connections: 8192 # 수립가능한 connection의 총 개수 [default 8192]
@@ -15,5 +13,7 @@ server:
       core-pool-size: 10
       max-pool-size: 20
       queue-capacity: 10
-
----
+spring:
+  web:
+    resources:
+      add-mappings: false
