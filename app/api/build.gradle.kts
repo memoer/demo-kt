@@ -36,6 +36,8 @@ dependencies {
     implementation(project(":infra:mongodb-adapter"))
     implementation(project(":infra:mysql-adapter"))
     implementation(project(":infra:redis-adapter"))
+
+    implementation(project(":support"))
 }
 
 protobuf {

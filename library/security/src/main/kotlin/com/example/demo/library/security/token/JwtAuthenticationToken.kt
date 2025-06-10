@@ -1,4 +1,4 @@
-package com.example.demo.library.security
+package com.example.demo.library.security.token
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.GrantedAuthority

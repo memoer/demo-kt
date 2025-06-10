@@ -1,6 +1,6 @@
 package com.example.demo.client.auth
 
-import com.example.demo.support.CustomUser
+import com.example.demo.support.LoggedInUser
 import org.springframework.stereotype.Service
 
 @Service
@@ -9,8 +9,8 @@ class AuthClient(private val stub: AuthServiceGrpc.AuthServiceBlockingStub) {
         val request = Empty.newBuilder().build()
         val credentials = AuthTokenCredentials(token)
         val response: ValidateResponse = stub.withCallCredentials(credentials).verify(request)
-        return Response(response.id, CustomUser.Type.valueOf(response.type), response.name)
+        return Response(response.id, LoggedInUser.Type.valueOf(response.type), response.name)
     }
 
-    data class Response(val id: Int, val type: CustomUser.Type, val name: String)
+    data class Response(val id: Int, val type: LoggedInUser.Type, val name: String)
 }

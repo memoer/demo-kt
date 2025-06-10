@@ -1,5 +1,7 @@
-package com.example.demo.library.security
+package com.example.demo.library.security.filter
 
+import com.example.demo.library.security.provider.JwtAuthenticationProvider
+import com.example.demo.library.security.token.JwtAuthenticationToken
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -61,31 +63,24 @@ class BearerTokenAuthenticationFilter(
         token: String,
         request: HttpServletRequest,
         response: HttpServletResponse,
-    ): Boolean {
+    ) {
         val authentication = JwtAuthenticationToken(authType, token, null)
         val authResult: Authentication
+
         try {
             authResult = this.authenticationManager.authenticate(authentication)
         } catch (ex: AuthenticationException) {
-            this.onUnsuccessfulAuthentication(request, response, ex)
-            return true
+            this.strategy.clearContext()
+            this.failureHandler.onAuthenticationFailure(request, response, ex)
+            this.logger.debug("Failed to process authentication request", ex)
+            return
         }
 
         with(strategy) {
             val ctx = createEmptyContext()
             ctx.authentication = authResult
             ctx
-        }.run { strategy.context = this }
-        return false
-    }
-
-    private fun onUnsuccessfulAuthentication(
-        request: HttpServletRequest?,
-        response: HttpServletResponse?,
-        ex: AuthenticationException,
-    ) {
-        this.strategy.clearContext()
-        this.failureHandler.onAuthenticationFailure(request, response, ex)
-        this.logger.debug("Failed to process authentication request", ex)
+        }
+            .run { strategy.context = this }
     }
 }

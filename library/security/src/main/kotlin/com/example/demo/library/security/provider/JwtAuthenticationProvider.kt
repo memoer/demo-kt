@@ -1,5 +1,6 @@
-package com.example.demo.library.security
+package com.example.demo.library.security.provider
 
+import com.example.demo.library.security.token.JwtAuthenticationToken
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -11,5 +12,5 @@ class JwtAuthenticationProvider(private val userDetailsService: UserDetailsServi
         JwtAuthenticationToken(it, null, it.authorities)
     }
 
-    override fun supports(authentication: Class<*>): Boolean = authentication.equals(JwtAuthenticationToken::class)
+    override fun supports(authentication: Class<*>): Boolean = JwtAuthenticationToken::class.java.isAssignableFrom(authentication)
 }

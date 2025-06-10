@@ -11,3 +11,5 @@ spring:
       - application-redis.yaml
       - application-security.yaml
       - application-web.yaml
+      - application-client-alarm.yaml
+      - application-client-auth.yaml

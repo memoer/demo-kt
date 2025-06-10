@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 class UsersDeleteController(private val usersDeleteHandler: UsersDeleteHandler) {
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun control(@Valid @RequestBody request: Request) =
-        UsersDeleteHandler.Args(request.email).run { usersDeleteHandler.handle(this) }
+    fun control(@Valid @RequestBody request: Request) = UsersDeleteHandler.Args(request.email).run { usersDeleteHandler.handle(this) }
 
     data class Request(@Email val email: String)
 }

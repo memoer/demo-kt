@@ -7,5 +7,5 @@ import org.springframework.grpc.client.GrpcChannelFactory
 @Configuration(proxyBeanMethods = false)
 class AuthClientConfig {
     @Bean
-    fun alarmStub(channels: GrpcChannelFactory): AuthServiceGrpc.AuthServiceBlockingStub = AuthServiceGrpc.newBlockingStub(channels.createChannel("auth"))
+    fun authStub(channels: GrpcChannelFactory): AuthServiceGrpc.AuthServiceBlockingStub = AuthServiceGrpc.newBlockingStub(channels.createChannel("auth"))
 }

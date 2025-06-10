@@ -96,6 +96,17 @@ services:
       - loki
     restart: always
 
+  auth:
+    image: 106001896445.dkr.ecr.ap-northeast-2.amazonaws.com/api.auth.seoltab.com:dev
+    container_name: auth-service
+    environment:
+      DB_HOST_LOCAL: 54.180.114.97
+      DB_PORT_LOCAL: 5622
+      USER_DB_HOST_LOCAL: 54.180.114.97
+      USER_DB_PORT_LOCAL: 5624
+    ports:
+      - "50052:50051"
+
 #  sonarqube:
 #    image: sonarqube
 #    container_name: test-sonar

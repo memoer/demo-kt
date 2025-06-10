@@ -1,5 +1,6 @@
 package com.example.demo.library.security
 
+import com.example.demo.library.security.filter.BearerTokenAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.Customizer
@@ -25,21 +26,20 @@ class SecurityConfig(
 ) {
     @Bean
     @Throws(Exception::class)
-    fun filterChain(): SecurityFilterChain? {
-        val bearerTokenAuthenticationFilter = BearerTokenAuthenticationFilter(userDetailsService, authenticationEntryPoint)
-        return http.cors(cors())
-            .csrf(Customizer { obj: CsrfConfigurer<HttpSecurity?>? -> obj!!.disable() })
-            .requestCache(Customizer { obj: RequestCacheConfigurer<HttpSecurity?>? -> obj!!.disable() })
-            .formLogin(Customizer { obj: FormLoginConfigurer<HttpSecurity?>? -> obj!!.disable() })
-            .httpBasic(Customizer { obj: HttpBasicConfigurer<HttpSecurity?>? -> obj!!.disable() })
-            .logout(Customizer { obj: LogoutConfigurer<HttpSecurity?>? -> obj!!.disable() })
-            .anonymous(Customizer { obj: AnonymousConfigurer<HttpSecurity?>? -> obj!!.disable() })
-            .sessionManagement(Customizer { obj: SessionManagementConfigurer<HttpSecurity?>? -> obj!!.disable() })
-            .exceptionHandling(exceptionHandling())
-//            .authorizeHttpRequests(authRouth())
-            .addFilterBefore(bearerTokenAuthenticationFilter, SecurityContextHolderAwareRequestFilter::class.java)
-            .build()
-    }
+    fun filterChain(): SecurityFilterChain? = http.cors(cors())
+        .requestCache { it.disable() }
+        .formLogin { it.disable() }
+        .httpBasic { it.disable() }
+        .logout { it.disable() }
+        .anonymous { it.disable() }
+        .sessionManagement { it.disable() }
+        .exceptionHandling(exceptionHandling())
+        .authorizeHttpRequests(authorizeHttpRequestsCustomizer())
+        .addFilterBefore(
+            BearerTokenAuthenticationFilter(userDetailsService, authenticationEntryPoint),
+            SecurityContextHolderAwareRequestFilter::class.java,
+        )
+        .build()
 
     private fun cors(): Customizer<CorsConfigurer<HttpSecurity>> {
         val config = CorsConfiguration()
@@ -58,5 +58,8 @@ class SecurityConfig(
         it.accessDeniedHandler(accessDeniedHandler)
     }
 
-    private fun authRouth(): Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry> = Customizer { it.requestMatchers("/observer/**").hasRole("ADMIN").anyRequest().permitAll() }
+    private fun authorizeHttpRequestsCustomizer(): Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry> = Customizer {
+        it.requestMatchers("/observer/**").hasRole("ADMIN")
+            .anyRequest().permitAll()
+    }
 }

@@ -1,7 +1,7 @@
 ---
 spring.config.activate.on-profile: local
 
-spring.grpc.client.channels.auth.address: dev.auth.api.seoltab:50051
+spring.grpc.client.channels.auth.address: localhost:50052
 ---
 spring.config.activate.on-profile: dev
 
