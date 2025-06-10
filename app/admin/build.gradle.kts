@@ -13,18 +13,18 @@ tasks.getByName("jar") {
 }
 
 dependencies {
+    implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
     implementation(project(":library:actuator"))
-    implementation(project(":library:logback"))
+    implementation(project(":library:log"))
     implementation(project(":library:web"))
 
     implementation(project(":core:board"))
     implementation(project(":core:comment"))
     implementation(project(":core:common"))
     implementation(project(":core:user"))
-
-    implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
-    implementation("org.springframework.boot:spring-boot-starter-aop")
-    implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
 protobuf {

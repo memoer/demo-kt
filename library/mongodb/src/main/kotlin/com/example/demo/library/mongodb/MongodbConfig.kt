@@ -1,5 +1,6 @@
-package com.example.demo.library.mongo
+package com.example.demo.library.mongodb
 
+import com.example.demo.library.mongo.MongodbConnectionPool
 import com.mongodb.ConnectionString
 import com.mongodb.MongoClientSettings
 import com.mongodb.ReadPreference
@@ -14,7 +15,7 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory
 import java.util.concurrent.TimeUnit
 
 @Configuration(proxyBeanMethods = false)
-class MongodbConfig(private val properties: MongoProperties, private val mongoConnectionPool: MongoConnectionPool) {
+class MongodbConfig(private val properties: MongoProperties, private val mongodbConnectionPool: MongodbConnectionPool) {
     @Bean
     fun mongoClientSettings(): MongoClientSettings = MongoClientSettings.builder()
         .applyConnectionString(ConnectionString(properties.uri))
@@ -23,11 +24,11 @@ class MongodbConfig(private val properties: MongoProperties, private val mongoCo
         .readPreference(ReadPreference.secondaryPreferred())
         .applyToConnectionPoolSettings {
             it
-                .minSize(mongoConnectionPool.minSize)
-                .maxSize(mongoConnectionPool.maxSize)
-                .maxConnectionLifeTime(mongoConnectionPool.maxConnectionLifeTime.seconds, TimeUnit.SECONDS)
-                .maxConnectionIdleTime(mongoConnectionPool.maxConnectionIdleTime.seconds, TimeUnit.SECONDS)
-                .maxWaitTime(mongoConnectionPool.maxWaitTime.seconds, TimeUnit.SECONDS)
+                .minSize(mongodbConnectionPool.minSize)
+                .maxSize(mongodbConnectionPool.maxSize)
+                .maxConnectionLifeTime(mongodbConnectionPool.maxConnectionLifeTime.seconds, TimeUnit.SECONDS)
+                .maxConnectionIdleTime(mongodbConnectionPool.maxConnectionIdleTime.seconds, TimeUnit.SECONDS)
+                .maxWaitTime(mongodbConnectionPool.maxWaitTime.seconds, TimeUnit.SECONDS)
         }
         .build()
 

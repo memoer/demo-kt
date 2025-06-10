@@ -1,0 +1,185 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.demo.client.alarm";
+option java_outer_classname = "AlarmProto";
+
+service AlarmService {
+  rpc Payment (PaymentInput) returns (AlarmOutput) {}
+  rpc Matching (MatchingInput) returns (AlarmOutput) {}
+  rpc Diagnosis (DiagnosisInput) returns (AlarmOutput) {}
+  rpc Feedback (FeedbackInput) returns (AlarmOutput) {}
+  rpc Lecture (LectureInput) returns (AlarmOutput) {}
+  rpc Device (DeviceInput) returns (AlarmOutput) {}
+  rpc Chatting (ChattingInput) returns (AlarmOutput) {}
+}
+
+message AlarmOutput {
+  bool result = 1;
+}
+
+message LectureInput {
+  string alarmType = 1;
+  string messageType = 2;
+  string scheduleDate = 3;
+  repeated LectureTargetInput targetInput = 4;
+}
+
+message LectureTargetInput {
+  int32 userId = 1;
+  string subjectName = 2;
+
+  string changeRequest = 3;
+  string changeDetail = 4;
+  string cancelType = 5;
+  string changeSchedule = 6;
+  string changeScheduleActor = 7;
+  string changeScheduleReason = 8;
+
+
+  string link = 10;
+
+  string previousSchedule = 11;
+  string firstSchedule = 12;
+  string scheduledAt = 13;
+  string regularSchedule = 14;
+
+  string reviewSummary = 15;
+  string reviewPositive = 16;
+  string reviewNegative = 17;
+
+  string itemOption = 18 [deprecated = true];
+  string changeItemOption = 19;
+
+  int32 studentUserId = 20;
+  int32 teacherUserId = 21;
+
+  string finishDate = 23;
+
+  string option = 24; // 수업 옵션
+  string item = 25;   // 상품 명
+  string changeitem = 26; // 변경될 상품 명
+
+  string teacherChangeStatus = 30;
+  string teacherChangeReason = 31;
+}
+
+message PaymentInput {
+  string alarmType = 1;
+  string messageType = 2;
+  string scheduleDate = 3;
+  repeated PaymentTargetInput targetInput = 4;
+}
+
+message PaymentTargetInput {
+  int32 userId = 1;
+  string studentName = 2;
+  string teacherName = 3;
+
+  string subjectName = 4;
+
+  string paymentItem = 5;
+  int32 amount = 6;
+
+  string refundAt = 7;
+  string refundBank = 8;
+  string refundBankAccount = 9;
+
+  string pin = 10;
+  string expiredAt = 11;
+
+  string bank = 12;
+  string bankAccount = 13;
+
+  string installment = 14;
+  string paidAt = 15;
+  string payed = 16;
+  string link = 17;
+
+  string tempId = 18;
+  string paymentMethod = 19;
+}
+
+message MatchingInput {
+  string alarmType = 1;
+  string messageType = 2;
+  string scheduleDate = 3;
+  repeated MatchingTargetInput targetInput = 4;
+}
+
+message MatchingTargetInput {
+  int32 userId = 1;
+  string studentName = 2;
+  string teacherName = 3;
+  string link = 4;
+  string subject = 5 [deprecated = true];
+
+  string subjectName = 6;
+  string regularSchedule = 7;
+  string firstSchedule = 8;
+
+  int32 studentUserId = 10;
+  int32 teacherUserId = 11;
+}
+
+message DiagnosisInput {
+  string alarmType = 1;
+  string messageType = 2;
+  string scheduleDate = 3;
+  repeated DiagnosisTargetInput targetInput = 4;
+}
+
+message DiagnosisTargetInput {
+  int32 userId = 1;
+  string reportType = 2;
+  string reportedAt = 3;
+  string link = 4;
+  string studentScholasticLow = 5;
+  string studentAptitudeLow = 6;
+  string reportPrescribe = 7;
+}
+
+message FeedbackInput {
+  string alarmType = 1;
+  string messageType = 2;
+  string scheduleDate = 3;
+  repeated FeedbackTargetInput targetInput = 4;
+}
+
+message FeedbackTargetInput {
+  int32 userId = 1; // tutor id
+  int32 studentUserId = 2; // 유저 아이디 번호
+  repeated string classGuideLines = 3; // 가이드 질문
+  repeated string classGuideNotices = 4; // 가이드 노티스 내용
+  int32 npsScore = 5;
+  string teacherName = 6;
+  string subjectName = 7;
+  string buttonLinkQueryString = 8;
+}
+
+message DeviceInput {
+  string alarmType = 1;
+  string messageType = 2;
+  string scheduleDate = 3;
+  repeated DeviceTargetInput targetInput= 4;
+}
+
+message DeviceTargetInput {
+  int32 userId = 1;
+  string returnDate = 2;
+}
+
+message ChattingInput {
+  string alarmType = 1;
+  string messageType = 2;
+  string scheduleDate = 3;
+  repeated ChattingTargetInput targetInput = 4;
+}
+
+message ChattingTargetInput {
+  int32 userId = 1; // 수신자 userId
+  string recipientName = 2; // 수신자 이름
+  string subjectName = 3;
+  int32 lectureLineId = 4;
+  string chat = 10;
+}

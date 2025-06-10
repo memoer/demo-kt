@@ -6,18 +6,19 @@ include(
 
     "client:alarm",
     "client:auth",
+    "client:user",
 
     "core:user",
     "core:board",
     "core:comment",
     "core:common",
 
-    "infrastructure:mysql",
-    "infrastructure:mongodb",
-    "infrastructure:redis",
+    "infra:mongodb-adapter",
+    "infra:mysql-adapter",
+    "infra:redis-adapter",
 
     "library:grpc",
-    "library:logback",
+    "library:log",
     "library:mongodb",
     "library:mysql",
     "library:redis",

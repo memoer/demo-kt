@@ -1,0 +1,16 @@
+---
+spring.config.activate.on-profile: local
+
+spring.grpc.client.channels.user.address: dev.user.api.seoltab:50051
+---
+spring.config.activate.on-profile: dev
+
+spring.grpc.client.channels.user.address: dev.user.api.seoltab:50051
+---
+spring.config.activate.on-profile: stage
+
+spring.grpc.client.channels.user.address: stage.user.api.seoltab:50051
+---
+spring.config.activate.on-profile: prod
+
+spring.grpc.client.channels.user.address: user.api.seoltab:50051

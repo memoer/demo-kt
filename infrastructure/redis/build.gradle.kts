@@ -1,6 +1,0 @@
-dependencies {
-    implementation(project(":support"))
-    implementation(project(":core:board"))
-
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
-}

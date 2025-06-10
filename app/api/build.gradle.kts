@@ -13,23 +13,29 @@ tasks.getByName("jar") {
 }
 
 dependencies {
+    implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
     implementation(project(":library:actuator"))
     implementation(project(":library:grpc"))
-    implementation(project(":library:logback"))
+    implementation(project(":library:log"))
     implementation(project(":library:mongodb"))
     implementation(project(":library:mysql"))
     implementation(project(":library:redis"))
     implementation(project(":library:security"))
     implementation(project(":library:web"))
 
+    implementation(project(":client:alarm"))
+
     implementation(project(":core:board"))
     implementation(project(":core:comment"))
     implementation(project(":core:common"))
     implementation(project(":core:user"))
 
-    implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
-    implementation("org.springframework.boot:spring-boot-starter-aop")
-    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation(project(":infra:mongodb-adapter"))
+    implementation(project(":infra:mysql-adapter"))
+    implementation(project(":infra:redis-adapter"))
 }
 
 protobuf {

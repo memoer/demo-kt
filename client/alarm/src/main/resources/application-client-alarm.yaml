@@ -1,0 +1,16 @@
+---
+spring.config.activate.on-profile: local
+
+spring.grpc.client.channels.alarm.address: dev.alarm.api.seoltab:50051
+---
+spring.config.activate.on-profile: dev
+
+spring.grpc.client.channels.alarm.address: dev.alarm.api.seoltab:50051
+---
+spring.config.activate.on-profile: stage
+
+spring.grpc.client.channels.alarm.address: stage.alarm.api.seoltab:50051
+---
+spring.config.activate.on-profile: prod
+
+spring.grpc.client.channels.alarm.address: alarm.api.seoltab:50051

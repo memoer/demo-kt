@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package authorization;
+
+option java_multiple_files = true;
+option java_package = "com.example.demo.client.auth";
+option java_outer_classname = "AuthProto";
+
+service AuthService {
+  rpc Verify (Empty) returns (ValidateResponse) {}
+}
+
+message Empty {
+
+}
+
+message ValidateResponse {
+  int32 id = 1;
+  string type = 2;
+  string name = 3;
+  string nickname = 4;
+}
