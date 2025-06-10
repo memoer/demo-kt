@@ -18,6 +18,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation(project(":library:actuator"))
+    implementation(project(":library:cloud-aws-s3"))
     implementation(project(":library:grpc"))
     implementation(project(":library:log"))
     implementation(project(":library:mongodb"))

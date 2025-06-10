@@ -6,9 +6,13 @@ spring:
       - application-actuator.yaml
       - application-grpc.yaml
       - application-log.yaml
-      - application-mongo.yaml
+      - application-mongodb.yaml
       - application-mysql.yaml
       - application-security.yaml
       - application-web.yaml
       - application-client-alarm.yaml
       - application-client-auth.yaml
+  cloud:
+    aws:
+      s3:
+        region: ap-northeast-2

@@ -17,7 +17,7 @@ include(
     "infrastructure:mysql",
     "infrastructure:redis",
 
-    "library:cloud-aws",
+    "library:cloud-aws-s3",
     "library:grpc",
     "library:log",
     "library:mongodb",
