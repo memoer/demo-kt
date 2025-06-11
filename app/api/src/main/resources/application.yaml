@@ -16,7 +16,7 @@ spring:
   graphql:
     schema:
       locations:
-        - classpath:graphql/base/**
+        - classpath:graphql/library/**
         - classpath:graphql/api/**
   cloud:
     aws:

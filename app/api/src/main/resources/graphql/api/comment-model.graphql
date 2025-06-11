@@ -1,0 +1,5 @@
+type CommentModel {
+    id: String!
+    text: String!
+    userId: Long!
+}

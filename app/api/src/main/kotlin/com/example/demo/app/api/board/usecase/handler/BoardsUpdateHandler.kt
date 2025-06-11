@@ -1,6 +1,6 @@
 package com.example.demo.app.api.board.usecase.handler
 
-import com.example.demo.app.api.board.usecase.handler.dto.BoardDto
+import com.example.demo.core.board.dto.BoardDto
 import com.example.demo.core.board.port.BoardReader
 import com.example.demo.core.board.port.BoardWriter
 import org.springframework.stereotype.Service

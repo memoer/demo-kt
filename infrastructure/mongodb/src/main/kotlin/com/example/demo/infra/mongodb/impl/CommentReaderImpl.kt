@@ -7,5 +7,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class CommentReaderImpl(private val repository: CommentRepository) : CommentReader {
-    override fun readById(id: String): Comment? = repository.findById(id).orElse(null).toDomain()
+    override fun readById(id: String): Comment {
+        val entity = repository.findById(id).orElseThrow()
+        return entity.toDomain()
+    }
 }

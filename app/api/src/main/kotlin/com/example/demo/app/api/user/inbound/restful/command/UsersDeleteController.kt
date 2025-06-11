@@ -1,4 +1,4 @@
-package com.example.demo.app.api.user.inbound.restful
+package com.example.demo.app.api.user.inbound.restful.command
 
 import com.example.demo.app.api.user.usecase.handler.UsersDeleteHandler
 import jakarta.validation.Valid

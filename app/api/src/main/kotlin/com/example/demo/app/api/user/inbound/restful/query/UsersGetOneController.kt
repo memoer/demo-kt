@@ -1,4 +1,4 @@
-package com.example.demo.app.api.user.inbound.restful
+package com.example.demo.app.api.user.inbound.restful.query
 
 import com.example.demo.app.api.user.usecase.handler.UsersGetOneHandler
 import com.example.demo.app.api.user.usecase.handler.dto.UserDto

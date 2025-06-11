@@ -1,0 +1,12 @@
+extend type Query {
+    getCommentOne(input: GetCommentOneInput!): CommentModel!
+    getComments(input: GetCommentsInput!): [CommentModel!]!
+}
+
+input GetCommentOneInput {
+    id: String!
+}
+
+input GetCommentsInput {
+    userId: Long!
+}

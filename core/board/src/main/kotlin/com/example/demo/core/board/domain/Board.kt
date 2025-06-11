@@ -3,7 +3,8 @@ package com.example.demo.core.board.domain
 import java.util.UUID
 
 class Board {
-    val id: UUID = UUID.randomUUID()
+    var id: UUID? = null
+        private set
     var title: String private set
     var content: String private set
     var tags: MutableList<String> private set

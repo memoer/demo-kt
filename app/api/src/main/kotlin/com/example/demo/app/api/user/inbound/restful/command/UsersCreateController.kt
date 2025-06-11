@@ -1,4 +1,4 @@
-package com.example.demo.app.api.user.inbound.restful
+package com.example.demo.app.api.user.inbound.restful.command
 
 import com.example.demo.app.api.user.usecase.handler.UsersCreateHandler
 import jakarta.validation.Valid
@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController
 class UsersCreateController(private val usersCreateHandler: UsersCreateHandler) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun control(@Valid @RequestBody request: Request) =
-        UsersCreateHandler.Args(request.name, request.email, request.password).run { usersCreateHandler.handle(this) }
+    fun control(@Valid @RequestBody request: Request) = UsersCreateHandler.Args(request.name, request.email, request.password).run { usersCreateHandler.handle(this) }
 
     data class Request(
         @NotBlank val name: String,

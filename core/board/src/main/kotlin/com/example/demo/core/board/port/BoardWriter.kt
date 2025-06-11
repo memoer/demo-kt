@@ -4,6 +4,6 @@ import com.example.demo.core.board.domain.Board
 import java.util.UUID
 
 interface BoardWriter {
-    fun write(entity: Board)
+    fun write(board: Board)
     fun delete(id: UUID)
 }

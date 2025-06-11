@@ -5,11 +5,11 @@ import com.example.demo.support.ReflectionUtils
 import java.util.UUID
 
 data class BoardEntity(
-    val id: UUID = UUID.randomUUID(),
-    val title: String = "",
-    val content: String = "",
-    val tags: MutableList<String> = mutableListOf(),
-    val isFrozen: Boolean = false,
+    var id: UUID?,
+    val title: String,
+    val content: String,
+    val tags: MutableList<String>,
+    val isFrozen: Boolean,
 ) {
     companion object {
         fun fromDomain(board: Board): BoardEntity = BoardEntity(board.id, board.title, board.content, board.tags, board.isFrozen)

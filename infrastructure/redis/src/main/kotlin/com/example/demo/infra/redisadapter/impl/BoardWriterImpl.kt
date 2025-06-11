@@ -10,9 +10,12 @@ import java.util.UUID
 
 @Repository
 class BoardWriterImpl(private val om: ObjectMapper, private val template: StringRedisTemplate) : BoardWriter {
-    override fun write(entity: Board): Unit = BoardEntity.fromDomain(entity)
-        .run { om.writeValueAsString(this) }
-        .run { template.opsForValue().set(entity.id.toString(), this) }
+    override fun write(board: Board): Unit = BoardEntity.fromDomain(board)
+        .run {
+            this.id = this.id ?: UUID.randomUUID()
+            val json = om.writeValueAsString(this)
+            template.opsForValue().set(this.id.toString(), json)
+        }
 
     override fun delete(id: UUID) {
         template.opsForValue().operations.unlink(id.toString())

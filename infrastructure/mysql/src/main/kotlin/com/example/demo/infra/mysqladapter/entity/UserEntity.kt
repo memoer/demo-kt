@@ -13,16 +13,16 @@ import jakarta.persistence.Table
 class UserEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    internal val id: Long? = null,
-    internal val name: String,
-    internal val email: String,
-    internal val password: String,
+    val id: Long?,
+    val name: String,
+    val email: String,
+    val password: String,
 ) {
     companion object {
-        fun fromDomain(user: User): UserEntity = UserEntity(if (user.id == -1L) null else user.id, user.name, user.email, user.password)
+        fun fromDomain(user: User): UserEntity = UserEntity(user.id, user.name, user.email, user.password)
     }
 
     fun toDomain(): User = User(name, email, password).apply {
-        ReflectionUtils.setPropertyValue(this, "id", this@UserEntity.id ?: -1L)
+        ReflectionUtils.setPropertyValue(this, "id", this@UserEntity.id)
     }
 }

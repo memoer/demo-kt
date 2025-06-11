@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service
 @Service
 class CustomUserDetailsService(private val authClient: AuthClient) : UserDetailsService {
     override fun loadUserByUsername(token: String): UserDetails = authClient.verify(token).run {
-        LoggedInUserAdapter(id.toLong(), name, type)
+        OnuiiUserAdapter(id.toLong(), name, type)
     }
 }

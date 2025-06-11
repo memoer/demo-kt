@@ -1,6 +1,6 @@
 package com.example.demo.support
 
-data class LoggedInUser(val id: Long, val name: String, val type: Type) {
+data class OnuiiUser(val id: Long, val name: String, val type: Type) {
 
     enum class Type {
         STUDENT,

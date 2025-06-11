@@ -5,5 +5,4 @@ import java.util.UUID
 
 interface BoardReader {
     fun readById(id: UUID): Board?
-    fun existsById(id: UUID): Boolean
 }

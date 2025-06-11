@@ -16,6 +16,4 @@ class BoardReaderImpl(private val om: ObjectMapper, private val template: String
             BoardEntity::class.java,
         )
     }?.toDomain()
-
-    override fun existsById(id: UUID): Boolean = template.opsForValue().get(id.toString()) != null
 }

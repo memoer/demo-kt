@@ -1,7 +1,7 @@
 package com.example.demo.app.api.board.inbound.restful
 
 import com.example.demo.app.api.board.usecase.handler.BoardsGetOneHandler
-import com.example.demo.app.api.board.usecase.handler.dto.BoardDto
+import com.example.demo.core.board.dto.BoardDto
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping

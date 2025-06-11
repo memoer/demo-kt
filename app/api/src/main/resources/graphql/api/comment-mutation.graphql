@@ -1,0 +1,12 @@
+extend type Mutation {
+    createComment(input: CreateCommentInput!): Boolean!
+    deleteComment(input: DeleteCommentInput!): Boolean!
+}
+
+input CreateCommentInput {
+    text: String!
+}
+
+input DeleteCommentInput {
+    id: String!
+}

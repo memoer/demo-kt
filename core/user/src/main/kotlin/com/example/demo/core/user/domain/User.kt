@@ -1,7 +1,8 @@
 package com.example.demo.core.user.domain
 
 class User {
-    val id: Long = -1L
+    var id: Long? = null
+        private set
     var name: String private set
     var email: String private set
     var password: String private set

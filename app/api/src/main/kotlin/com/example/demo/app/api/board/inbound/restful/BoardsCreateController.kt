@@ -16,9 +16,8 @@ class BoardsCreateController(private val handler: BoardsCreateHandler) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun control(@Valid @RequestBody request: Request): Unit =
-        BoardsCreateHandler.Args(request.title, request.content, request.tags)
-            .run { handler.handle(this) }
+    fun control(@Valid @RequestBody request: Request): Unit = BoardsCreateHandler.Args(request.title, request.content, request.tags)
+        .run { handler.handle(this) }
 
     data class Request(
         @Size(min = 1, max = 100) val title: String,
