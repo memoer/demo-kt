@@ -1,0 +1,35 @@
+spring:
+  graphql:
+    schema:
+      introspection:
+        enabled: true
+      file-extensions: .graphql
+
+---
+spring.config.activate.on-profile: local
+
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+---
+spring.config.activate.on-profile: dev
+
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+---
+spring.config.activate.on-profile: stage
+
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+---
+spring.config.activate.on-profile: prod
+
+spring:
+  graphql:
+    graphiql:
+      enabled: false

@@ -4,6 +4,7 @@ spring:
   config:
     import:
       - application-actuator.yaml
+      - application-graphql.yaml
       - application-grpc.yaml
       - application-log.yaml
       - application-mongodb.yaml
@@ -12,6 +13,11 @@ spring:
       - application-web.yaml
       - application-client-alarm.yaml
       - application-client-auth.yaml
+  graphql:
+    schema:
+      locations:
+        - classpath:graphql/base/**
+        - classpath:graphql/api/**
   cloud:
     aws:
       s3:

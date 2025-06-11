@@ -6,6 +6,7 @@ plugins {
     id("org.springframework.boot") apply false
     id("io.spring.dependency-management")
     id("com.google.protobuf") apply false
+    id("com.netflix.dgs.codegen") apply false
 
     id("org.jlleitschuh.gradle.ktlint") apply false
 }

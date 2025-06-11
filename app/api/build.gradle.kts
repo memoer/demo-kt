@@ -2,6 +2,7 @@ import com.google.protobuf.gradle.id
 
 plugins {
     id("com.google.protobuf")
+    id("com.netflix.dgs.codegen")
 }
 
 tasks.getByName("bootJar") {
@@ -19,6 +20,7 @@ dependencies {
 
     implementation(project(":library:actuator"))
     implementation(project(":library:cloud-aws-s3"))
+    implementation(project(":library:graphql"))
     implementation(project(":library:grpc"))
     implementation(project(":library:log"))
     implementation(project(":library:mongodb"))
@@ -40,6 +42,12 @@ dependencies {
     implementation(project(":infrastructure:redis-adapter"))
 
     implementation(project(":support"))
+}
+
+tasks.generateJava {
+    schemaPaths.add("$projectDir/src/main/resources/graphql/api")
+    packageName = "com.example.demo.app.api.graphql"
+    generateClient = false
 }
 
 protobuf {

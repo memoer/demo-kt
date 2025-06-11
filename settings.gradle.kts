@@ -18,6 +18,7 @@ include(
     "infrastructure:redis",
 
     "library:cloud-aws-s3",
+    "library:graphql",
     "library:grpc",
     "library:log",
     "library:mongodb",
@@ -39,6 +40,7 @@ pluginManagement {
     val springBootVersion: String by settings
     val springDependencyManagementVersion: String by settings
     val protobufVersion: String by settings
+    val graphqlVersion: String by settings
     val ktLintVersion: String by settings
 
     resolutionStrategy {
@@ -51,6 +53,8 @@ pluginManagement {
                 "org.springframework.boot" -> useVersion(springBootVersion)
                 "io.spring.dependency-management" -> useVersion(springDependencyManagementVersion)
                 "com.google.protobuf" -> useVersion(protobufVersion)
+                "com.netflix.dgs.codegen" -> useVersion(graphqlVersion)
+
                 "org.jlleitschuh.gradle.ktlint" -> useVersion(ktLintVersion)
             }
         }
