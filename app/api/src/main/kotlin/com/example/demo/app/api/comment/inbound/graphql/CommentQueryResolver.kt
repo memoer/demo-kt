@@ -4,18 +4,19 @@ import com.example.demo.app.api.graphql.types.CommentModel
 import com.example.demo.app.api.graphql.types.GetCommentOneInput
 import com.example.demo.app.api.graphql.types.GetCommentsInput
 import com.example.demo.core.comment.port.CommentQuery
+import org.springframework.graphql.data.method.annotation.Argument
 import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.stereotype.Controller
 
 @Controller
 class CommentQueryResolver(private val commentQuery: CommentQuery) {
     @QueryMapping
-    fun getCommentOne(input: GetCommentOneInput): CommentModel = CommentQuery.FindOneArgs(input.id).run { commentQuery.findOne(this) }.let {
+    fun getCommentOne(@Argument input: GetCommentOneInput): CommentModel = CommentQuery.FindOneArgs(input.id).run { commentQuery.findOne(this) }.let {
         CommentModel(it.id!!, it.text, it.userId)
     }
 
     @QueryMapping
-    fun getComments(input: GetCommentsInput): List<CommentModel> = CommentQuery.FindManyArgs(input.userId)
+    fun getComments(@Argument input: GetCommentsInput): List<CommentModel> = CommentQuery.FindManyArgs(input.userId)
         .run { commentQuery.findMany(this) }
         .map { CommentModel(it.id!!, it.text, it.userId) }
 }

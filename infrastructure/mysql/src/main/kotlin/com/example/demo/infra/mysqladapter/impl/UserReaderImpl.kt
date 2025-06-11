@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class UserReaderImpl(private val repository: UserSchemaRepository, private val qf: JPAQueryFactory) : UserReader {
-    private final val user = QUserEntity.userEntity
     override fun readById(id: Long): User? {
-        val entity = qf.selectFrom(user).where(user.id.eq(id)).fetchOne()
+        val u = QUserEntity.userEntity
+        val entity = qf.selectFrom(u).where(u.id.eq(id)).fetchOne()
         if (entity == null) {
             throw RuntimeException()
         }
