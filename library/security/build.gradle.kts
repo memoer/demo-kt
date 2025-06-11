@@ -1,5 +1,5 @@
 dependencies {
-    implementation(project(":support"))
+    implementation(project(":support:util"))
     implementation(project(":client:auth"))
 
     implementation("org.springframework.boot:spring-boot-starter-security")

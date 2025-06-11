@@ -1,7 +1,7 @@
 package com.example.demo.infra.redisadapter.entity
 
 import com.example.demo.core.board.domain.Board
-import com.example.demo.support.ReflectionUtils
+import com.example.demo.support.util.ReflectionUtils
 import java.util.UUID
 
 data class BoardEntity(

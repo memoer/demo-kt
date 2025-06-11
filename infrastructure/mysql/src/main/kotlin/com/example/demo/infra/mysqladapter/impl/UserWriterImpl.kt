@@ -4,7 +4,7 @@ import com.example.demo.core.user.domain.User
 import com.example.demo.core.user.port.UserWriter
 import com.example.demo.infra.mysqladapter.entity.UserEntity
 import com.example.demo.infra.mysqladapter.repository.UserSchemaRepository
-import com.example.demo.support.ReflectionUtils
+import com.example.demo.support.util.ReflectionUtils
 import org.springframework.stereotype.Repository
 
 @Repository

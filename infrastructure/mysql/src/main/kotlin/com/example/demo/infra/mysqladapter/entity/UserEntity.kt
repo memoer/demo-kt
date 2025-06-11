@@ -1,7 +1,7 @@
 package com.example.demo.infra.mysqladapter.entity
 
 import com.example.demo.core.user.domain.User
-import com.example.demo.support.ReflectionUtils
+import com.example.demo.support.util.ReflectionUtils
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType

@@ -1,4 +1,4 @@
-package com.example.demo.support
+package com.example.demo.support.util
 
 import kotlin.reflect.KMutableProperty1
 import kotlin.reflect.full.memberProperties

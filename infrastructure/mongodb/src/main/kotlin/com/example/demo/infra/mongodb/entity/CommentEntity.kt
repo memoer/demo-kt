@@ -2,7 +2,7 @@ package com.example.demo.infra.mongodb.entity
 
 import com.example.demo.core.comment.domain.Comment
 import com.example.demo.core.comment.dto.CommentDto
-import com.example.demo.support.ReflectionUtils
+import com.example.demo.support.util.ReflectionUtils
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 

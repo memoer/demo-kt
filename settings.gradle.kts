@@ -28,7 +28,8 @@ include(
     "library:security",
     "library:web",
 
-    "support",
+    "support:error",
+    "support:util",
 )
 
 project(":infrastructure:mongodb").name = "mongodb-adapter"

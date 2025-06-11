@@ -1,6 +1,6 @@
 dependencies {
     implementation(project(":core:user"))
-    implementation(project(":support"))
+    implementation(project(":support:util"))
     implementation(project(":library:mysql"))
 
     // QueryDSL dependencies

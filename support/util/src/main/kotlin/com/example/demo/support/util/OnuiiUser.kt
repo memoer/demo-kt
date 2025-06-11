@@ -1,4 +1,4 @@
-package com.example.demo.support
+package com.example.demo.support.util
 
 data class OnuiiUser(val id: Long, val name: String, val type: Type) {
 

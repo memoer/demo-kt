@@ -2,7 +2,7 @@ package com.example.demo.app.api.user.inbound.restful
 
 import com.example.demo.library.security.annotation.AuthRequired
 import com.example.demo.library.security.annotation.CurrentUser
-import com.example.demo.support.OnuiiUser
+import com.example.demo.support.util.OnuiiUser
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
