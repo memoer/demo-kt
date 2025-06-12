@@ -1,17 +1,40 @@
 package com.example.demo.support.error.resolver
 
+import com.example.demo.support.error.ErrorType
 import com.example.demo.support.error.exception.CustomException
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 
 @Component
 class ErrorViewResolver {
-    fun response(ex: CustomException): MutableMap<String, Any> = mutableMapOf<String, Any>().apply {
-        this["timestamp"] = LocalDateTime.now()
-        this["error"] = ex.javaClass.simpleName
-        this["type"] = ex.type
-        this["statusCode"] = ex.type.statusCode
-        this["onuiiCode"] = ex.type.onuiiCode
-        this["message"] = ex.message ?: "Unknown error"
+    fun resolve(ex: CustomException): Result = Result.of(ex)
+
+    data class Result(
+        val timestamp: LocalDateTime,
+        val error: String,
+        val type: ErrorType,
+        val statusCode: Int,
+        val onuiiCode: String,
+        val message: String,
+    ) {
+        companion object {
+            fun of(ex: CustomException) = Result(
+                LocalDateTime.now(),
+                ex.javaClass.simpleName,
+                ex.type,
+                ex.type.statusCode,
+                ex.type.onuiiCode,
+                ex.message ?: "Unknown error",
+            )
+        }
+
+        fun toMap(): Map<String, Any> = mapOf(
+            "timestamp" to timestamp,
+            "error" to error,
+            "type" to type,
+            "statusCode" to statusCode,
+            "onuiiCode" to onuiiCode,
+            "message" to message,
+        )
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller
 class CommentQueryResolver(private val commentQuery: CommentQuery) {
     @QueryMapping
     fun getCommentOne(@Argument input: GetCommentOneInput): CommentModel = CommentQuery.FindOneArgs(input.id).run { commentQuery.findOne(this) }.let {
+        throw RuntimeException("Test")
         CommentModel(it.id!!, it.text, it.userId)
     }
 

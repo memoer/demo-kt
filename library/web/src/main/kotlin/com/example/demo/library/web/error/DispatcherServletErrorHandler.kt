@@ -15,9 +15,9 @@ class DispatcherServletErrorHandler(
     private val logger = KotlinLogging.logger {}
 
     @ExceptionHandler
-    fun handle(throwable: Throwable?): MutableMap<String, Any> {
+    fun handle(throwable: Throwable?): ErrorViewResolver.Result {
         val ex: CustomException = exceptionConverterTemplate.run(throwable!!)
         logger.error(ex) { ex.message }
-        return errorViewResolver.response(ex)
+        return errorViewResolver.resolve(ex)
     }
 }
