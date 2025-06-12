@@ -1,4 +1,5 @@
 dependencies {
+    implementation(project(":core:common"))
     implementation(project(":core:user"))
     implementation(project(":support:util"))
     implementation(project(":library:mysql"))
