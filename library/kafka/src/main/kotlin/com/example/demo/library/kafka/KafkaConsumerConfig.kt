@@ -1,5 +1,7 @@
 package com.example.demo.library.kafka
 
+import com.example.demo.support.error.converter.ExceptionConverterTemplate
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.TopicPartition
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -15,7 +17,12 @@ import org.springframework.kafka.listener.DefaultErrorHandler
 import org.springframework.util.backoff.FixedBackOff
 
 @Configuration(proxyBeanMethods = false)
-class KafkaConsumerConfig(private val props: KafkaProperties, private val template: KafkaTemplate<String, String>) {
+class KafkaConsumerConfig(
+    private val props: KafkaProperties,
+    private val template: KafkaTemplate<String, String>,
+    private val exceptionConverterTemplate: ExceptionConverterTemplate,
+) {
+    private val logger = KotlinLogging.logger {}
 
     @Value("\${spring.kafka.consumer.concurrency:3}")
     private var concurrency: Int = 3
@@ -34,7 +41,10 @@ class KafkaConsumerConfig(private val props: KafkaProperties, private val templa
         val topic = props.retry.topic
         val backOff = FixedBackOff(topic.backoff.delay.seconds, topic.attempts.toLong())
         val recoverer =
-            DeadLetterPublishingRecoverer(template) { r, e -> TopicPartition(r.topic() + ".dlt", r.partition()) }
+            DeadLetterPublishingRecoverer(template) { r, e ->
+                exceptionConverterTemplate.run(e).run { logger.error(this) { this.message } }
+                TopicPartition(r.topic() + ".dlt", r.partition())
+            }
         return DefaultErrorHandler(recoverer, backOff)
     }
 

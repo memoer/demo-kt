@@ -7,7 +7,5 @@ import org.springframework.stereotype.Component
 @Component
 class TestKafkaConsumer {
     @DefaultKafkaListener(topics = ["test"])
-    fun consume(record: ConsumerRecord<String, String>) {
-        println("Consuming record: $record")
-    }
+    fun consume(record: ConsumerRecord<String, String>): Unit = throw RuntimeException("test consume")
 }
