@@ -1,0 +1,32 @@
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+---
+spring.config.activate.on-profile: local
+
+spring:
+  kafka:
+    consumer:
+      group-id: demo-local
+---
+spring.config.activate.on-profile: dev
+
+spring:
+  kafka:
+    consumer:
+      group-id: demo-dev
+---
+spring.config.activate.on-profile: stage
+
+spring:
+  kafka:
+    consumer:
+      group-id: demo-stage
+---
+spring.config.activate.on-profile: prod
+
+spring:
+  kafka:
+    consumer:
+      group-id: demo-prod

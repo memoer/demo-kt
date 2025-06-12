@@ -6,6 +6,7 @@ spring:
       - application-actuator.yaml
       - application-graphql.yaml
       - application-grpc.yaml
+      - application-kafka.yaml
       - application-log.yaml
       - application-mongodb.yaml
       - application-mysql.yaml

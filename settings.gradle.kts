@@ -20,6 +20,7 @@ include(
     "library:cloud-aws-s3",
     "library:graphql",
     "library:grpc",
+    "library:kafka",
     "library:log",
     "library:mongodb",
     "library:mysql",

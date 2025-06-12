@@ -20,4 +20,17 @@ spring:
         access-key: ${AWS_ACCESS_KEY}
         secret-key: ${AWS_SECRET_KEY}
       s3:
-        bucket-name: test
+        bucket-name: ${BUCKET_NAME}
+  kafka:
+    producer:
+      bootstrap-servers:
+        - http://localhost:9092
+    consumer:
+      concurrency: 3
+      bootstrap-servers:
+        - http://localhost:9092
+    retry:
+      topic:
+        attempts: 2
+        backoff:
+          delay: 1s
