@@ -47,6 +47,7 @@ subprojects {
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+        implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
 
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 

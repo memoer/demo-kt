@@ -1,4 +1,4 @@
-package com.example.demo.library.security.errorhandling
+package com.example.demo.library.security.error
 
 import com.example.demo.support.error.converter.ExceptionConverter
 import com.example.demo.support.error.exception.CustomException

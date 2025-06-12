@@ -13,7 +13,6 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-    implementation("io.github.oshai:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
