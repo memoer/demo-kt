@@ -1,5 +1,7 @@
 package com.example.demo.library.web
 
+import org.springframework.boot.autoconfigure.web.ErrorProperties
+import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,4 +15,8 @@ class SpringWebConfig {
     fun restTemplate(): RestTemplate = RestTemplateBuilder()
         .apply { connectTimeout(Duration.ofMillis(1_000)) }
         .build()
+
+    @Bean
+    @ConfigurationProperties(prefix = "server.error")
+    fun errorProperties(): ErrorProperties = ErrorProperties()
 }

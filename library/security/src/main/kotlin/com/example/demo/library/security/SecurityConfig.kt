@@ -61,7 +61,8 @@ class SecurityConfig(
     }
 
     private fun authorizeHttpRequestsCustomizer(): Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry> = Customizer {
-        it.requestMatchers("/observer/**").hasRole("ADMIN")
+        it.requestMatchers("/observer/prometheus").permitAll()
+            .requestMatchers("/observer/**").hasRole("ADMIN")
             .anyRequest().permitAll()
     }
 }
