@@ -1,5 +1,6 @@
 dependencies {
     implementation(project(":support:util"))
+    implementation(project(":core:common"))
     implementation(project(":core:comment"))
     implementation(project(":library:mongodb"))
 

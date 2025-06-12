@@ -2,4 +2,6 @@ type CommentModel {
     id: String!
     text: String!
     userId: Long!
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
