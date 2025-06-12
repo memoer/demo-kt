@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository
 class UserWriterImpl(private val repository: UserSchemaRepository) : UserWriter {
 
     override fun write(user: User) {
-        val saved = UserEntity.fromDomain(user).run { repository.save(this) }
+        val saved = UserEntity.from(user).run { repository.save(this) }
         ReflectionUtils.setPropertyValue(user, "id", saved.id)
     }
 
-    override fun delete(user: User): Unit = UserEntity.fromDomain(user).run { repository.delete(this) }
+    override fun delete(user: User): Unit = UserEntity.from(user).run { repository.delete(this) }
 }

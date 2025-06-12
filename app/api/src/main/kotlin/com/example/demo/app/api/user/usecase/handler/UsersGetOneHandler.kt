@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class UsersGetOneHandler(private val userReader: UserReader) {
     fun handle(args: Args): UserDto {
         val user = userReader.readById(args.id) ?: throw RuntimeException()
-        return UserDto.fromDomain(user)
+        return UserDto.from(user)
     }
 
     data class Args(val id: Long)

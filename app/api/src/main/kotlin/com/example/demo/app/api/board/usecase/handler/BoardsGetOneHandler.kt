@@ -8,7 +8,7 @@ import java.util.UUID
 @Service
 class BoardsGetOneHandler(private val boardReader: BoardReader) {
 
-    fun handle(args: Args): BoardDto = boardReader.readById(args.id)?.let { BoardDto.fromDomain(it) } ?: throw RuntimeException()
+    fun handle(args: Args): BoardDto = boardReader.readById(args.id)?.let { BoardDto.from(it) } ?: throw RuntimeException()
 
     data class Args(val id: UUID)
 }

@@ -18,7 +18,7 @@ class BoardsUpdateHandler(private val boardReader: BoardReader, private val boar
             isFrozen?.let { if (it) entity.freeze() }
         }
         boardWriter.write(entity)
-        return BoardDto.fromDomain(entity)
+        return BoardDto.from(entity)
     }
 
     data class Args(

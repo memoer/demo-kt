@@ -19,7 +19,7 @@ class UserEntity(
     val password: String,
 ) {
     companion object {
-        fun fromDomain(user: User): UserEntity = UserEntity(user.id, user.name, user.email, user.password)
+        fun from(user: User): UserEntity = UserEntity(user.id, user.name, user.email, user.password)
     }
 
     fun toDomain(): User = User(name, email, password).apply {

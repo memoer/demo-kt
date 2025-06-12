@@ -14,7 +14,7 @@ class CommentEntity(
     val userId: Long,
 ) {
     companion object {
-        fun fromDomain(comment: Comment): CommentEntity = CommentEntity(comment.id, comment.text, comment.userId)
+        fun from(comment: Comment): CommentEntity = CommentEntity(comment.id, comment.text, comment.userId)
     }
 
     fun toDomain(): Comment = Comment(text, userId).apply {

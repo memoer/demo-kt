@@ -10,11 +10,11 @@ import org.springframework.stereotype.Repository
 @Repository
 class CommentWriterImpl(private val repository: CommentRepository) : CommentWriter {
     override fun write(comment: Comment) {
-        val saved = CommentEntity.fromDomain(comment).run { repository.save(this) }
+        val saved = CommentEntity.from(comment).run { repository.save(this) }
         ReflectionUtils.setPropertyValue(comment, "id", saved.id)
     }
 
     override fun delete(comment: Comment) {
-        CommentEntity.fromDomain(comment).run { repository.delete(this) }
+        CommentEntity.from(comment).run { repository.delete(this) }
     }
 }

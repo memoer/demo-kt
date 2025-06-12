@@ -4,6 +4,6 @@ import com.example.demo.core.comment.domain.Comment
 
 data class CommentDto(val id: String?, var text: String, var userId: Long) {
     companion object {
-        fun fromDomain(domain: Comment): CommentDto = CommentDto(domain.id, domain.text, domain.userId)
+        fun from(domain: Comment): CommentDto = CommentDto(domain.id, domain.text, domain.userId)
     }
 }

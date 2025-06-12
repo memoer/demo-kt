@@ -10,7 +10,7 @@ import java.util.UUID
 
 @Repository
 class BoardWriterImpl(private val om: ObjectMapper, private val template: StringRedisTemplate) : BoardWriter {
-    override fun write(board: Board): Unit = BoardEntity.fromDomain(board)
+    override fun write(board: Board): Unit = BoardEntity.from(board)
         .run {
             this.id = this.id ?: UUID.randomUUID()
             val json = om.writeValueAsString(this)

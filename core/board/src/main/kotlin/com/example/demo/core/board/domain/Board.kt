@@ -1,20 +1,25 @@
 package com.example.demo.core.board.domain
 
+import com.example.demo.core.common.domain.Base
+import java.time.LocalDateTime
 import java.util.UUID
 
-class Board {
-    var id: UUID? = null
-        private set
+class Board : Base<UUID> {
     var title: String private set
     var content: String private set
     var tags: MutableList<String> private set
     var isFrozen: Boolean private set
 
-    constructor(title: String, content: String, tags: MutableList<String>) {
+    constructor(
+        title: String,
+        content: String,
+        tags: MutableList<String>,
+        isFrozen: Boolean,
+    ) : super(UUID.randomUUID()) {
         this.title = title
         this.content = content
         this.tags = tags
-        this.isFrozen = false
+        this.isFrozen = isFrozen
     }
 
     fun freeze() {
@@ -26,6 +31,7 @@ class Board {
             throw RuntimeException("$id is frozen")
         }
         this.title = title
+        this.updatedAt = LocalDateTime.now()
     }
 
     fun changeContent(content: String) {
@@ -33,6 +39,7 @@ class Board {
             throw RuntimeException("$id is frozen")
         }
         this.content = content
+        this.updatedAt = LocalDateTime.now()
     }
 
     fun addTags(tags: List<String>) {
@@ -43,6 +50,7 @@ class Board {
             throw RuntimeException("the boundary of tags size is 100")
         }
         this.tags.addAll(tags)
+        this.updatedAt = LocalDateTime.now()
     }
 
     fun deleteTags(tags: List<String>) {
@@ -50,5 +58,6 @@ class Board {
             throw RuntimeException("$id is frozen")
         }
         this.tags = this.tags.filter { it !in tags }.toMutableList()
+        this.updatedAt = LocalDateTime.now()
     }
 }
