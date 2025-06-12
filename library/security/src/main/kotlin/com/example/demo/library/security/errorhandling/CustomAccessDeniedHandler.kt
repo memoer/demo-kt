@@ -1,5 +1,6 @@
 package com.example.demo.library.security.errorhandling
 
+import com.example.demo.support.error.exception.ForbiddenException
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpStatus
@@ -10,8 +11,8 @@ import org.springframework.web.util.WebUtils
 
 @Component
 class CustomAccessDeniedHandler : AccessDeniedHandler {
-    override fun handle(request: HttpServletRequest?, response: HttpServletResponse?, ex: AccessDeniedException?) {
-        request?.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex)
+    override fun handle(request: HttpServletRequest?, response: HttpServletResponse?, ex: AccessDeniedException) {
+        request?.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ForbiddenException(ex))
         response?.sendError(HttpStatus.FORBIDDEN.value(), HttpStatus.FORBIDDEN.reasonPhrase)
     }
 }

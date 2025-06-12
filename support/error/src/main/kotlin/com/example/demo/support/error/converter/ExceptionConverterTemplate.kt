@@ -8,13 +8,17 @@ import org.springframework.stereotype.Component
 class ExceptionConverterTemplate(private val exceptionConverters: List<ExceptionConverter<Any>>) {
 
     fun run(throwable: Throwable): CustomException {
-        for (exceptionConverter in exceptionConverters) {
-            if (!exceptionConverter.support(throwable)) {
-                continue
+        if (throwable is CustomException) {
+            return throwable
+        } else {
+            for (exceptionConverter in exceptionConverters) {
+                if (!exceptionConverter.support(throwable)) {
+                    continue
+                }
+                // noinspection unchecked
+                return exceptionConverter.convert(throwable)
             }
-            // noinspection unchecked
-            return exceptionConverter.convert(throwable)
+            return InternalServerErrorException(throwable)
         }
-        return InternalServerErrorException(throwable)
     }
 }
