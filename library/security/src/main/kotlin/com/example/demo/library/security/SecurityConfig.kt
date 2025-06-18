@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.web.AuthenticationEntryPoint
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.access.AccessDeniedHandler
-import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
@@ -39,7 +39,7 @@ class SecurityConfig(
         .authorizeHttpRequests(authorizeHttpRequestsCustomizer())
         .addFilterBefore(
             BearerTokenAuthenticationFilter(userDetailsService, authenticationEntryPoint),
-            SecurityContextHolderAwareRequestFilter::class.java,
+            UsernamePasswordAuthenticationFilter::class.java,
         )
         .build()
 

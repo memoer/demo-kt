@@ -1,5 +1,5 @@
 dependencies {
-    implementation(project(":support:util"))
+    implementation(project(":support:type"))
     implementation(project(":support:error"))
     implementation(project(":client:auth"))
 

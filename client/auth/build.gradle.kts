@@ -5,7 +5,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":support:util"))
+    implementation(project(":support:type"))
 
     implementation("org.springframework.grpc:spring-grpc-spring-boot-starter")
 }

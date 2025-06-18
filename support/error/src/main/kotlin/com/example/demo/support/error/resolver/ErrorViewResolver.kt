@@ -7,7 +7,14 @@ import java.time.LocalDateTime
 
 @Component
 class ErrorViewResolver {
-    fun resolve(ex: CustomException): Result = Result.of(ex)
+    fun resolve(ex: CustomException): Result = Result(
+        LocalDateTime.now(),
+        ex.javaClass.simpleName,
+        ex.type,
+        ex.type.statusCode,
+        ex.type.onuiiCode,
+        ex.message ?: "Unknown error",
+    )
 
     data class Result(
         val timestamp: LocalDateTime,
@@ -17,16 +24,6 @@ class ErrorViewResolver {
         val onuiiCode: String,
         val message: String,
     ) {
-        companion object {
-            fun of(ex: CustomException) = Result(
-                LocalDateTime.now(),
-                ex.javaClass.simpleName,
-                ex.type,
-                ex.type.statusCode,
-                ex.type.onuiiCode,
-                ex.message ?: "Unknown error",
-            )
-        }
 
         fun toMap(): Map<String, Any> = mapOf(
             "timestamp" to timestamp,

@@ -4,7 +4,7 @@ import com.example.demo.app.api.comment.usecase.handler.CreateCommentHandler
 import com.example.demo.app.api.graphql.types.CreateCommentInput
 import com.example.demo.library.security.annotation.AuthRequired
 import com.example.demo.library.security.annotation.CurrentUser
-import com.example.demo.support.util.OnuiiUser
+import com.example.demo.support.type.OnuiiUser
 import org.springframework.graphql.data.method.annotation.Argument
 import org.springframework.graphql.data.method.annotation.MutationMapping
 import org.springframework.stereotype.Controller

@@ -1,6 +1,6 @@
 package com.example.demo.client.auth
 
-import com.example.demo.support.util.OnuiiUser
+import com.example.demo.support.type.OnuiiUser
 import org.springframework.stereotype.Service
 
 @Service

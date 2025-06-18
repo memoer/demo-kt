@@ -1,6 +1,6 @@
 package com.example.demo.library.security.service
 
-import com.example.demo.support.util.OnuiiUser
+import com.example.demo.support.type.OnuiiUser
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 

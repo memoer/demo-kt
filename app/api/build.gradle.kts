@@ -41,7 +41,7 @@ dependencies {
     implementation(project(":infrastructure:mysql-adapter"))
     implementation(project(":infrastructure:redis-adapter"))
 
-    implementation(project(":support:util"))
+    implementation(project(":support:type"))
 }
 
 tasks.generateJava {
