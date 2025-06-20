@@ -25,7 +25,7 @@ class CustomErrorAttributes(
      */
     override fun getErrorAttributes(webRequest: WebRequest?, options: ErrorAttributeOptions?): Map<String, Any> {
         val throwable = this.getError(webRequest)
-        val ex: CustomException = exceptionConverterTemplate.run(throwable)
+        val ex: CustomException = exceptionConverterTemplate.convert(throwable)
         logger.error(ex) { ex.message }
         return errorViewResolver.resolve(ex).toMap()
     }

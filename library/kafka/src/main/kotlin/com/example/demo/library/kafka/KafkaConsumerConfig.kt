@@ -40,11 +40,11 @@ class KafkaConsumerConfig(
     private fun errorHandler(): DefaultErrorHandler {
         val topic = props.retry.topic
         val backOff = FixedBackOff(topic.backoff.delay.seconds, topic.attempts.toLong())
-        val recoverer =
-            DeadLetterPublishingRecoverer(template) { r, e ->
-                exceptionConverterTemplate.run(e).run { logger.error(this) { this.message } }
-                TopicPartition(r.topic() + ".dlt", r.partition())
-            }
+        val recoverer = DeadLetterPublishingRecoverer(template) { record, throwable ->
+            val ex = exceptionConverterTemplate.convert(throwable)
+            logger.error(ex) { ex.message }
+            TopicPartition(record.topic() + ".dlt", record.partition())
+        }
         return DefaultErrorHandler(recoverer, backOff)
     }
 

@@ -7,6 +7,7 @@ import java.time.LocalDateTime
 
 @Component
 class ErrorViewResolver {
+
     fun resolve(ex: CustomException): Result = Result(
         LocalDateTime.now(),
         ex.javaClass.simpleName,

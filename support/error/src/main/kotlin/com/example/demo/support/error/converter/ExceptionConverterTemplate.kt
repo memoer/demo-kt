@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 class ExceptionConverterTemplate(private val exceptionConverters: List<ExceptionConverter<Any>>) {
 
-    fun run(throwable: Throwable): CustomException {
+    fun convert(throwable: Throwable): CustomException {
         if (throwable is CustomException) {
             return throwable
         } else {

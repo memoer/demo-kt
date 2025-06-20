@@ -1,4 +1,4 @@
-package com.example.demo.library.kafka
+package com.example.demo.library.kafka.annotation
 
 import org.springframework.core.annotation.AliasFor
 import org.springframework.kafka.annotation.KafkaListener

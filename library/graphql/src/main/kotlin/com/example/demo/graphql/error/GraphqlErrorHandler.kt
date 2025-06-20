@@ -23,7 +23,7 @@ class GraphqlErrorHandler(
         @Nonnull throwable: Throwable,
         @Nonnull env: DataFetchingEnvironment,
     ): GraphQLError {
-        val ex: CustomException = exceptionConverterTemplate.run(throwable)
+        val ex: CustomException = exceptionConverterTemplate.convert(throwable)
         log.error(ex) { ex.message }
         return GraphqlErrorBuilder.newError()
             .message(ex.message)

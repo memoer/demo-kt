@@ -16,7 +16,7 @@ class DispatcherServletErrorHandler(
 
     @ExceptionHandler
     fun handle(throwable: Throwable?): ErrorViewResolver.Result {
-        val ex: CustomException = exceptionConverterTemplate.run(throwable!!)
+        val ex: CustomException = exceptionConverterTemplate.convert(throwable!!)
         logger.error(ex) { ex.message }
         return errorViewResolver.resolve(ex)
     }
